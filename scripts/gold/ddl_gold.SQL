@@ -1,0 +1,65 @@
+/*
+	DDL Script: Create gold Views
+	Purpose:
+		> Create Views from the silver table
+		> Gold views finally gives dimension and Fact tables
+		> Creating Star Schema
+		> The gold view had business ready data to be query for business purposes
+	Usage:
+		These views can be query directly for analytics and reporting.
+*/
+CREATE VIEW gold.dim_customers AS 
+SELECT 
+ROW_NUMBER() OVER (ORDER BY cst_id) AS customer_key,
+ci.cst_id AS customer_id,
+ci.cst_key AS customer_number,
+ci.cst_firstname AS first_name,
+ci.cst_lastname AS last_name,
+la.cntry AS country,
+cst_marital_status AS marital_status,
+ca.bdate AS birthday,
+CASE 
+	WHEN ci.cst_gndr != 'N/A' THEN ci.cst_gndr
+	ELSE COALESCE(ca.gen, 'N/A')
+END as gender,
+ci.cst_create_date AS create_date
+FROM silver.crm_cust_info ci
+LEFT JOIN silver.erp_cust_az12 ca
+ON ci.cst_key = ca.cid
+LEFT JOIN silver.erp_loc_a101 la
+ON ci.cst_key = la.cid
+--Create dimension Product View
+CREATE VIEW gold.dim_products AS 
+SELECT 
+ROW_NUMBER() OVER (ORDER BY pn.prd_start_dt, pn.prd_key) AS product_key,
+pn.prd_id AS product_id,
+pn.prd_key AS product_number,
+pn.prd_nm AS product_name,
+pn.cat_id category_id,
+pc.cat AS  category,
+pc.subcat AS subcategory,
+pc.maintenance,
+pn.prd_cost AS cost,
+pn.prd_line AS product_line,
+pn.prd_start_dt AS start_date
+FROM silver.crm_prd_info AS pn
+LEFT JOIN silver.erp_px_cat_g1v2 pc
+	ON pn.cat_id = pc.id
+WHERE pn.prd_end_dt IS NULL --Filter all historic data & end date doesn't mention because it is always null
+--Create gold.fact_sales
+CREATE VIEW gold.fact_sales AS 
+SELECT
+	sls_ord_num AS order_number,
+	product_key,
+	customer_key,
+	sls_order_dt AS order_date,
+	sls_ship_dt AS shipping_date,
+	sls_due_dt AS due_date,
+	sls_sales AS sales,
+	sls_quantity AS quantity,
+	sls_price AS price
+FROM silver.crm_sales_details
+LEFT JOIN gold.dim_products
+ON sls_prd_key = product_number
+LEFT JOIN gold.dim_customers
+ON customer_id = sls_cust_id
