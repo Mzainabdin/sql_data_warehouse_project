@@ -98,7 +98,7 @@ data-warehouse-project/
 ---
 
 ## Credits 
-   ** Baraa khatib salkini**
+##### ** Baraa khatib salkini**
     Mr. Baraa is the mentor who guide me and thousands in this project and a lot more courses which you can explore as you please.
 
 Let's stay in touch! Feel free to connect with Mr. Baraa on the following platforms:
@@ -110,7 +110,7 @@ Let's stay in touch! Feel free to connect with Mr. Baraa on the following platfo
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/baraasalkini)
 [![Join](https://img.shields.io/badge/Join-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@datawithbaraa)
 
-All Courses and their materials are completely free, and all I ask is your support through subscribing, liking, and commenting on my channel. Your engagement means the world to me and It help the channel!
+All Courses and their materials are completely free, and all he need is your support through subscribing, liking, and commenting on his channel. Your engagement means the world to him and It help the channel!
 - ✅ **SQL Full Course:** [Course Link](https://youtu.be/SSKVgrwhzus) | [Download Materials](https://www.datawithbaraa.com/sql-introduction/sql-ultimate-course/) | [GIT Repo](https://github.com/DataWithBaraa/sql-ultimate-course)
 - ✅ **Tableau Full Course:** [Course Link](https://www.youtube.com/watch?v=K3pXnbniUcM) | [Download Materials](https://www.datawithbaraa.com/tableau/tableau-thank-you/) | [Public](https://public.tableau.com/app/profile/baraa.salkini/vizzes)
 
