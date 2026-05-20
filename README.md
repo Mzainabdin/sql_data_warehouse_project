@@ -98,8 +98,8 @@ data-warehouse-project/
 ---
 
 ## Credits 
-##### ** Baraa khatib salkini**
-    Mr. Baraa is the mentor who guide me and thousands in this project and a lot more courses which you can explore as you please.
+##### Baraa khatib salkini
+Mr. Baraa is the mentor who guide me and thousands in this project and a lot more courses which you can explore as you please.
 
 Let's stay in touch! Feel free to connect with Mr. Baraa on the following platforms:
 
